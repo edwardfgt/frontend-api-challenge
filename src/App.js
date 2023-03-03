@@ -1,15 +1,21 @@
 import "./App.css";
 import Title from './components/Title';
+import { useState } from "react";
 
 function App() {
-  console.log('Test console log');
+  const [role, setRole] = useState('dev')
   const testVariable = true;
   return (
     <div className="App">
       {testVariable ?
       <>
-        <Title/>
-        <p>hello</p>
+      <input type='text' onChange={(e) => {
+        console.log(e.target.value);
+        setRole(e.target.value);
+      }}/>
+        <Title name="Chitter" role="user"/>
+        <Title name="Twitter"/>
+        <Title name="Facebook" role={role}/>
       </>
       :
       <p>You cannot see the test</p>
