@@ -10,7 +10,7 @@ function Employee(props) {
       <p className="text-slate-500 font-medium">{props.role}</p>
     </div>
 
-    <EditEmployee/>
+    <EditEmployee name={props.name} role={props.role}/>
 
   </div>
 </div>
