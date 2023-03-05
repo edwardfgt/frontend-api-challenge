@@ -8,44 +8,56 @@ function App() {
     {
       id: 1,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     },
     {
       id: 2,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     },
     {
       id: 3,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     },
     {
       id: 4,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     },
     {
       id: 5,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     },
     {
       id: 6,
       name: "Edward",
-     role: "CEO",
+      role: "CEO",
       img: "https://www.gatesfoundation.org/-/media/gfo/3about/3people/ga_warren_buffett_20210203_0001.jpg"
     }
   ])
-  const testVariable = true;
+
+  function updateEmployee(id, newName, newRole){
+    const updatedEmployees = employees.map((employee) => {
+      if (id === employee.id){
+        return {...employee, name: newName, role: newRole }
+      } else {
+        return employee
+      }
+    });
+    setEmployees(updatedEmployees);
+  }
+
+  const showEmployees = true;
   return (
     <div className="App">
-      {testVariable ?
+      {showEmployees ?
       <>
       <input type='text' onChange={(e) => {
         console.log(e.target.value);
@@ -56,10 +68,13 @@ function App() {
        {employees.map((employee) => {
         return (
         <Employee 
+          key={employee.id}
           id ={employee.id}
           name={employee.name} 
           role={employee.role} 
-          img={employee.img} />
+          img={employee.img}
+          updateEmployee={updateEmployee}
+          />
           );
        })}
       </div>
@@ -67,9 +82,6 @@ function App() {
       :
       <p>You cannot see the test</p>
     }
-
-
-      
     </div>
   );
 }
